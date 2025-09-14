@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secaps Black - Emagreça Rápido e com Saúde</title>
+  <style>
+    :root {
+      --primary: #00e5e5;
+      --dark: #000;
+      --light: #fff;
+      --danger: #ff3b3b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #111; color: var(--light); }
+
+    /* HEADER */
+    header { background: linear-gradient(90deg, #000, #111); padding: 3rem 2rem; text-align: center; }
+    header h1 { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+    header p { font-size: 1.2rem; margin-bottom: 1rem; }
+    header img { max-width: 280px; margin: 1.5rem auto; display: block; }
+
+    /* SEGREDO */
+    .segredo {
+  padding: 60px 20px;
+  background: #111;
+  text-align: center;
+}
+
+.segredo h2 {
+  color: #00d9d9;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.segredo h2 span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.segredo .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.segredo .card {
+  background: #1b1b1b;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.segredo .card:hover {
+  background: #222;
+  transform: translateY(-5px);
+}
+
+.segredo .card h3 {
+  color: #00d9d9;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.segredo .card p {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+    /* BOTÕES */
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--dark);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:hover { background: #00cccc; transform: scale(1.05); }
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(-25deg);
+      transition: 0.5s;
+    }
+    .btn:hover::after { left: 150%; }
+
+    /* SEÇÕES */
+    section { padding: 3rem 2rem; max-width: 1100px; margin: auto; }
+    .box { background: #1a1a1a; margin-bottom: 2rem; border-radius: 12px; padding: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.4); }
+
+    h2 { text-align: center; margin-bottom: 1.5rem; color: var(--primary); }
+
+    ul { list-style: none; }
+    ul li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+    ul li::before { content: "✔"; color: var(--primary); position: absolute; left: 0; }
+
+    /* GRID INGREDIENTES */
+    .ingredients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .ingredient { background: #222; padding: 1rem; border-radius: 10px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .ingredient img { max-width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+    .ingredient h3 { color: var(--primary); margin-bottom: .5rem; }
+
+    /* PLANOS */
+    .plans { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .plan { flex: 1 1 300px; border: 2px solid var(--primary); border-radius: 12px; padding: 1.5rem; text-align: center; background: #1a1a1a; transition: transform 0.3s; }
+    .plan:hover { transform: scale(1.05); }
+    .plan h3 { margin-bottom: 1rem; color: var(--primary); }
+    .highlight { border: 3px solid var(--danger); background: #222; }
+
+    /* FAQ */
+    .faq details { margin-bottom: 1rem; border: 1px solid #333; padding: 1rem; border-radius: 8px; background: #1c1c1c; }
+    .faq summary { font-weight: bold; cursor: pointer; color: var(--primary); }
+
+    /* DEPOIMENTOS */
+    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .testimonial { background: #222; padding: 1.5rem; border-radius: 10px; text-align: center; box-shadow: 0 3px 6px rgba(0,0,0,0.5); }
+    .testimonial img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 1rem; object-fit: cover; }
+    .testimonial p { font-style: italic; margin-bottom: 1rem; }
+    .testimonial strong { color: var(--primary); }
+
+    /* GARANTIA */
+    .guarantee { background: #0a0a0a; text-align: center; border: 2px solid var(--primary); border-radius: 12px; padding: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.5); }
+    .guarantee h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .guarantee p { font-size: 1.1rem; margin-bottom: 1rem; }
+
+    /* FOOTER */
+    footer { background: #000; text-align: center; padding: 2rem; font-size: 0.9rem; color: #bbb; }
+
+    /* ANIMAÇÃO SCROLL */
+    .animate { opacity: 1 !important; transform: translateY(0) !important; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SECAPS BLACK</h1>
+    <p>O seu segredo para emagrecer rápido e saudável.</p>
+    <p><strong style="color: var(--danger);">Atenção:</strong> Oferta especial apenas hoje!</p>
+    <img src="https://secapsblackmax.com/wp-content/uploads/2023/12/3-potes-1024x1024.png" alt="Frasco Secaps Black">
+    <a href="#planos" class="btn">QUERO EXPERIMENTAR!</a>
+  </header>
+
+  <section class="box">
+    <h2>Benefícios</h2>
+    <ul>
+      <li>Queime calorias sem exercícios constantes</li>
+      <li>Reduz a vontade de comer e aumenta a saciedade</li>
+      <li>Melhora o funcionamento do intestino</li>
+      <li>100% natural e saudável, sem efeitos colaterais</li>
+    </ul>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="#planos" class="btn">QUERO EXPERIMENTAR!</a>
+    </div>
+  </section>
+
+<section class="segredo">
+  <h2>Qual o segredo do <span>SECAPS BLACK</span> e por que ele realmente funciona?</h2>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>Auxilia no emagrecimento</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/5.png" alt="Emagrecimento">
+      <p>
+        Aumenta o metabolismo através da boa nutrição das células e promove o emagrecimento acelerado. 
+        O organismo utiliza mais carboidratos como fonte de energia e absorve mais proteínas, ajudando na redução da glicemia, ganho de massa muscular e perda de peso, principalmente na região abdominal.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Reduz a fome excessiva</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/1.png" alt="Reduz Fome">
+      <p>
+        O psyllium, quitosana e cromo que compõem essa potente fórmula reduzem a vontade de comer o tempo todo! 
+        Ao serem ingeridas absorvem água, aumentando de tamanho no estômago e formando um gel, promovendo saciedade sem causar danos à saúde ou alterar a nutrição do corpo.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Energia para exercícios</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/6.png" alt="Energia">
+      <p>
+        Uma poderosa fonte de proteínas, a spirulina fornece energia de qualidade. 
+        Além disso, fortalece as bactérias boas do intestino, aumentando a produção da vitamina B6, que contribui diretamente para mais disposição e desempenho físico.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Elimina a gordura do corpo</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/4.png" alt="Elimina Gordura">
+      <p>
+        Além de acelerar o metabolismo e queimar gordura, a composição rica em psyllium regula a atividade intestinal e melhora o fluxo digestivo, ajudando o corpo a eliminar toxinas sem comprometer a saúde.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Antioxidante, promove saúde</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/3.png" alt="Antioxidante">
+      <p>
+        Fórmula inovadora com alto poder antioxidante, capaz de inibir a oxidação celular. 
+        Enquanto ajuda no emagrecimento, protege o organismo contra doenças como diabetes e câncer.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Natural e bom para o corpo</h3>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/2.png" alt="Natual">
+      <p>
+        Todos os componentes são 100% naturais e dosados corretamente para emagrecer sem causar danos. 
+        Diferente de outras fórmulas, o SECAPS BLACK promove a perda de peso preservando a saúde e o bem-estar.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <section class="box">
+    <h2>Ingredientes da Fórmula</h2>
+    <div class="ingredients-grid">
+      <div class="ingredient">
+        <img src="https://secapsblackmax.com/wp-content/uploads/2023/12/8.png" alt="Psyllium">
+        <h3>Psyllium</h3>
+        <p>Fibra solúvel que regula o intestino e aumenta a saciedade.</p>
+      </div>
+      <div class="ingredient">
+        <img src="https://secapsblackmax.com/wp-content/uploads/2023/12/9.png" alt="Spirulina">
+        <h3>Spirulina</h3>
+        <p>Fonte de proteínas e energia, fortalece o corpo e melhora disposição.</p>
+      </div>
+      <div class="ingredient">
+        <img src="https://secapsblackmax.com/wp-content/uploads/2023/12/7.png" alt="Quitosana">
+        <h3>Quitosana</h3>
+        <p>Reduz absorção de gordura e promove saciedade.</p>
+      </div>
+      <div class="ingredient">
+        <img src="https://secapsblackmax.com/wp-content/uploads/2023/12/1-1.png" alt="Cromo Picolinato">
+        <h3>Cromo Picolinato</h3>
+        <p>Ajuda no controle da glicemia e insulina, favorecendo metabolismo saudável.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="box" id="planos">
+    <h2>Escolha seu Tratamento</h2>
+    <div class="plans">
+      <div class="plan highlight">
+        <h3>O MAIS PEDIDO - 5 MESES</h3>
+        <p><del>R$897,99</del></p>
+        <p><strong>Por R$397,00</strong></p>
+        <p>12x R$39,86</p>
+        <p>Frete grátis</p>
+        <a href="https://ev.braip.com/checkout/plalxgye/chejnlrv?af=afi8j382ny&ck=chejnlrv&currency=BRL&pl=plalxgye" class="btn">COMPRAR AGORA</a>
+      </div>
+      <div class="plan">
+        <h3>3 MESES</h3>
+        <p><del>R$597,99</del></p>
+        <p><strong>Por R$297,00</strong></p>
+        <p>12x R$29,82</p>
+        <p>Frete grátis</p>
+        <a href="https://ev.braip.com/checkout/plarp9xw/chejnlrv?af=afi8j382ny&ck=chejnlrv&currency=BRL&pl=plarp9xw" class="btn">COMPRAR AGORA</a>
+      </div>
+      <div class="plan">
+        <h3>1 MÊS</h3>
+        <p><del>R$297,99</del></p>
+        <p><strong>Por R$197,00</strong></p>
+        <p>12x R$19,78</p>
+        <p>Frete R$29,90</p>
+        <a href="https://ev.braip.com/checkout/pla4w6lg/chejnlrv?af=afi8j382ny&ck=chejnlrv&currency=BRL&pl=pla4w6lg" class="btn">COMPRAR AGORA</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="box">
+    <h2>Depoimentos de Clientes</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+        <p>“Em apenas 2 meses eliminei 8kg! Me sinto mais disposta e com muito mais autoestima.”</p>
+        <strong>- Mariana S.</strong>
+      </div>
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Cliente">
+        <p>“Nunca pensei que conseguiria controlar minha fome, o Secaps Black realmente funciona.”</p>
+        <strong>- Ricardo A.</strong>
+      </div>
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Cliente">
+        <p>“Produto maravilhoso, resultados visíveis já nas primeiras semanas. Recomendo demais!”</p>
+        <strong>- Camila F.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarantee">
+    <h2>Garantia de Resultados</h2>
+<img src="https://secapsblackmax.com/wp-content/uploads/2023/12/90-dias-de-garantia-secaps-1024x1024.png" alt="Garantia" width="300" height="300">
+    <p>Confiamos tanto na qualidade do <strong>Secaps Black</strong> que oferecemos garantia total.</p>
+    <p>Se em até 90 dias você não ficar satisfeito, devolvemos 100% do seu dinheiro.</p>
+    <a href="#planos" class="btn">EXPERIMENTE SEM RISCO</a>
+  </section>
+
+  <section class="box faq">
+    <h2>Dúvidas Frequentes</h2>
+    <details>
+      <summary>O que é o SECAPS BLACK?</summary>
+      <p>É um produto 100% natural que auxilia no emagrecimento, promove saciedade, energia e saúde.</p>
+    </details>
+    <details>
+      <summary>Como devo utilizar?</summary>
+      <p>Duas cápsulas ao dia antes das refeições principais. Uso contínuo recomendado.</p>
+    </details>
+    <details>
+      <summary>Tem efeitos colaterais?</summary>
+      <p>Não possui efeitos colaterais, exceto para alérgicos a crustáceos, gestantes ou lactantes (consultar médico).</p>
+    </details>
+    <details>
+      <summary>É aprovado pela ANVISA?</summary>
+      <p>Sim, é aprovado e possui ingredientes testados e seguros.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>Compra 100% segura | Satisfação garantida | Privacidade protegida</p>
+    <p>&copy; 2025 Secaps Black - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Animações ao rolar a página
+    const elements = document.querySelectorAll('.ingredient, .plan, .testimonial, .box, .guarantee');
+    function checkScroll() {
+      const trigger = window.innerHeight * 0.85;
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+          el.classList.add('animate');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+  </script>
+
+</body>
+</html>
